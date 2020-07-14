@@ -78,7 +78,7 @@ jobs:
       - name: Install wheel
         # install the created wheel without using the pypi index
         run: |
-          pip install -f dist --no-index sqlalchemy
+          pip install -f dist --no-index SQLAlchemy-mmeyer724
 
       - name: Check c extensions
         # on windows in python 2.7 and 3.5 the cextension fail to build.
@@ -220,7 +220,7 @@ jobs:
           echo Wheel tag ${{ matrix.python-version }}. Installed version $version.
           if [[ "${{ matrix.python-version }}" = "$version" ]]
           then
-            pip install -f wheelhouse --no-index sqlalchemy
+            pip install -f wheelhouse --no-index SQLAlchemy-mmeyer724
             python -c 'from sqlalchemy import cprocessors, cresultproxy, cutils'
             pip install pytest pytest-xdist ${{ matrix.extra-requires }}
             pytest -n2 -q test -k 'not MockReconnectTest' --nomemory
